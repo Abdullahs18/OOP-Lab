@@ -1,32 +1,29 @@
-/*Write a function that accepts three arguments: an array, the size of the
-array, and a number n. Assume that the array contains integers. The function
-should display all of the numbers in the array that are greater than the number
-n.*/
+/*Write a program that count the number of vowels and consonants in a string using a pointer.*/
 #include <iostream>
+#include <cctype>
 using namespace std;
-
-void function(int array[], int n, int num) {
-  int comparenumber = num;
-
-  for (int i = 0; i < n; i++) {
-
-    if (array[i] > comparenumber) {
-      cout << "Number: ";
-      cout << array[i] << endl;
+void vowelconsonant_counter(string* str){
+    int vowel_counter=0;
+    int consonant_counter=0;
+    for (int i=0;i<str->length();i++){
+    	char ch=(*str)[i];
+        if (isalpha(ch)) {
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' || ch=='E' || ch=='O' || ch=='I' || ch=='U'){
+                vowel_counter++;
+            }
+        
+        else{
+            consonant_counter++;
+        }
     }
-  }
+    }
+    cout<<"Vowels: " <<vowel_counter <<endl;
+    cout <<"Consonant: " <<consonant_counter;
+
 }
-int main() {
-  int n;
-  cout << "Enter number of elements: ";
-  cin >> n;
-  int num;
-  cout << "Enter array elements: ";
-  int array[n];
-  for (int i = 0; i < n; i++) {
-    cin >> array[i];
-  }
-  cout << "Enter number a you want to compare: ";
-  cin >> num;
-  function(array, n, num);
+int main(){
+string str;
+cout <<"Enter a string: ";
+cin >>str;
+vowelconsonant_counter(&str);
 }

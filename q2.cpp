@@ -1,38 +1,60 @@
-/*Write a function named coinToss that simulates the tossing of a coin. When you call the
-function, it should generate a random number in the range of 1 through 2. If the random number
-is 1, the function should display “heads.” If the random number is 2, the function should display
-“tails.” Demonstrate the function in a program that asks the user how many times the coin should
-be tossed and then simulates the tossing of the coin that number of times.*/
+/*In statistics, the mode of a set of values is the value that occurs most often or with the greatest
+frequency. Write a function that accepts as arguments the following: A) An array of integers B)
+An integer that indicates the number of elements in the array The function should determine the
+mode of the array. That is, it should determine which value in the array occurs most often. The
+mode is the value the function should return. If the array has no mode (none of the values occur
+more than once), the function should return −1. (Assume the array will always contain nonnegative
+values.) Demonstrate your pointer prowess by using pointer notation instead of array notation in
+this function.*/
+
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
-void cointoss(int tossing)
-{
-    int minvalue=1;
-    int maxvalue=2;
-    int counter;
-    srand(time(0));
-    for (counter = 0; counter < tossing; counter++){
-	
+
+int mode(int array[], int n) {
+    
+    int count, maxCount = 0;
+    int* modeValue = &array[0];
+
+    for (int i = 0; i < n; i++) {
+        count = 0; 
+    for (int j = 0; j < n; j++) {
+            if (array[i] == array[j]) {
+                count++;
+            }
+            }
+        if (count > maxCount) {
+            maxCount = count;
+            modeValue = &array[i];
+        }
+        
+        	
+}
     
     
-    int randomnumber = rand() % (maxvalue - minvalue + 1) + minvalue;
-    cout << randomnumber <<endl;
-    if (randomnumber == 1)
-    {
-        cout << "Heads" <<endl;
+    if (maxCount>1){
+        return *modeValue;
+
     }
-    if (randomnumber == 2)
-    {
-        cout << "Tails" <<endl;
+    else{
+        return -1;
     }
+
+    
+
 }
+
+int main() {
+    int n;
+    cout <<"Enter size of array:";
+    cin >>n;
+    int* array=new int[n];
+    cout <<"Enter array elements:";
+    for (int i=0;i<n;i++){
+        cin >>array[i];
+    }
+    int answer=mode(array,n);
+    cout <<answer;
+
+  
 }
-int main()
-{
-    int no_tossing;
-    cout << "Enter the number of times you want to toss: ";
-    cin >> no_tossing;
-    cointoss(no_tossing);
-}
+
