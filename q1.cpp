@@ -1,26 +1,25 @@
-/*Write a function that dynamically allocates an array of integers. The function should accept an
-integer argument indicating the number of elements to allocate. The function should return a
-pointer to the array.*/
+/*Write a program that asks the user to enter today’s sales for five stores. The
+program should then display a bar graph comparing each store’s sales. Create
+each bar in the bar graph by displaying a row of asterisks. Each asterisk should
+represent $100 of sales.*/
 #include <iostream>
 using namespace std;
-int *memory_allocation(int n){
-    int* array=(int*)malloc(n*sizeof(int));
-    for (int i=0;i<n;i++){
-        cout <<"Enter element #" <<i+1 <<" ";
-        cin >>array[i];
+void asterics() {
+  int myarr[5];
+  cout << "Enter array elements: ";
+  for (int i = 0; i < 5; i++) {
+    cin >> myarr[i];
+  }
+  cout << "Inputted Values: ";
+  for (int i = 0; i < 5; i++) {
+    cout << myarr[i] << endl;
+  }
+  for (int i = 0; i < 5; i++) {
+    int numberstar = myarr[i] / 100;
+    for (int i = 0; i < numberstar; i++) {
+      cout << "*";
     }
-    for (int i=0;i<n;i++){
-        cout <<array[i] <<" ";
-    }
-    return array;
+    cout << "\n";
+  }
 }
-int main(){
-    int n;
-
-    cout <<"Enter number of elements you want to store: ";
-    cin >>n;
-    cout <<endl;
-    int *array=memory_allocation(n);
-    delete(array);
-
-}
+int main() { asterics(); }
